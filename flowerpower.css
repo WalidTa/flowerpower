@@ -1,0 +1,17 @@
+.zijkant {
+    height: 100%;
+    width: 225px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #E3FBE2;
+    padding-top: 20px;
+  }
+
+
+body {
+      background-color: black;
+      color: brown;
+  }
+  
