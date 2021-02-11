@@ -1,8 +1,11 @@
 <?php
 include 'database.php';
-$obj = new database();
-$obj->insertMedewerkerUser('walid', 'root');
+// hier onder is de eerste insert maar we moeten inloggen
+//$obj = new database();
+//$obj->insertMedewerkerUser('walid', 'root');
 
+
+$msg = '';
 if(isset($_POST['submit'])){
 
     $fieldnames = ['username', 'password'];
@@ -11,16 +14,20 @@ if(isset($_POST['submit'])){
     foreach($fieldnames as $fieldname){
         if(!isset($_POST[$fieldname]) || empty($_POST[$fieldname])){
             $error = true; 
+            $msg = 'error';
         }
 
     }
 
     if(!$error){
-        //error
+        $obj = new database();
+        $obj->loginmedewerker($_POST['username'], $_POST['password']);
+        //login
     }else{
-        //react
+        //niks
     }
 }
+
 ?>
 
 
@@ -51,11 +58,11 @@ if(isset($_POST['submit'])){
 
     <a href="index.php"> <img src="bouquet.png"  width="180" height="150"> </a> <br>
 
-<form method="post" action="loginEmployee.php" class="logmede">
-    <h3 class="employee">log in als medewerker: </h3>
-                <input type="text" title="username" placeholder="Username.." required/><br> <br>
-                <input type="password" title="password" placeholder="Password.." required/><br> <br>
-                <button type="submit" class="btn">Login</button><br>
+<form method="post" action="medewerker.php" class="logmede">
+                <h3 class="employee">log in als medewerker: </h3>
+                <input type="text" name="username" placeholder="Username.." required/><br> <br>
+                <input type="password" name="password" placeholder="Password.." required/><br> <br>
+                <button type="submit" name="submit" class="btn">Login</button><br>
             </form>
 
 

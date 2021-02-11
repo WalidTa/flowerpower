@@ -1,8 +1,10 @@
 <?php
 include 'database.php';
-$obj = new database();
-$obj->insertKlantUser('walid', 'root');
+// hier onder is de eerste insert maar we moeten inloggen
+//$obj = new database();
+//$obj->insertKlantUser('walid', 'root');
 
+$msg = '';
 if(isset($_POST['submit'])){
 
     $fieldnames = ['username', 'password'];
@@ -11,16 +13,20 @@ if(isset($_POST['submit'])){
     foreach($fieldnames as $fieldname){
         if(!isset($_POST[$fieldname]) || empty($_POST[$fieldname])){
             $error = true; 
+            $msg = 'error';
         }
 
     }
 
     if(!$error){
-        //error
+        $obj = new database();
+        $obj->loginklant($_POST['username'], $_POST['password']);
+        //login
     }else{
-        //react
+        //niks
     }
 }
+
 ?>
 
 
@@ -51,10 +57,10 @@ if(isset($_POST['submit'])){
 
     <a href="index.php"> <img src="bouquet.png"  width="180" height="150"> </a> <br>
 
-<form method="post" action="loginCustomer.php" class="logklant">
+<form method="post" action="klant.php" class="logklant">
                 <h3 class="customer">log in als klant: </h3>
-                <input type="text" title="username" placeholder="Username.." required/><br> <br>
-                <input type="password" title="password" placeholder="Password.." required/><br> <br>
+                <input type="text" name="username" placeholder="Username.." required/><br> <br>
+                <input type="password" name="password" placeholder="Password.." required/><br> <br>
                 <button type="submit" class="btn">Login</button><br>
             </form>
 
