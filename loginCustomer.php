@@ -20,7 +20,7 @@ if(isset($_POST['submit'])){
 
     if(!$error){
         $obj = new database();
-        $obj->loginklant($_POST['username'], $_POST['password']);
+        $obj->loginklant($_POST['username'], $_POST['password ']);
         //login
     }else{
         //niks

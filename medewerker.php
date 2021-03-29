@@ -8,15 +8,16 @@
 </head>
 <body>
     
-<div class="foto">
-   <p>  lijst bestellingen </p> 
-</div>
+
 
 <div id="container"> 
     <div class="head">
        <h1 id="title"> medewerker</h1>
     </div>
 
+<div class="foto">
+   <p>  "lijst bestellingen" </p> 
+</div>
 
 </div>
 
